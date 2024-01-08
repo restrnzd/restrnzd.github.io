@@ -42,32 +42,28 @@ async function protege(usuario) {
 async function agrega(evt) {
   try {
     evt.preventDefault();
-    const formData =
-      new FormData(forma);
-    /** @type {string} */
-    const texto = getString(
-      formData, "texto").trim();
-    const timestamp =
-      // @ts-ignore
-      firebase.firestore.
-        FieldValue.
-        serverTimestamp();
-    /** @type {import(
-        "./tipos.js").Mensaje} */
+    const formData = new FormData(forma);
+    const texto = getString(formData, "texto").trim();
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+    
+    // Obtener la URL del avatar del usuario actual
+    const usuario = await getAuth().currentUser;
+    const avatarUrl = usuario.photoURL;
+
     const modelo = {
       usuarioId,
       texto,
-      timestamp
+      timestamp,
+      avatar: avatarUrl, // Agregar la URL del avatar al modelo
     };
-    /* El modelo se agrega a
-     * la colección
-     * "Mensaje". */
+
     await daoMensaje.add(modelo);
     forma.texto.value = "";
   } catch (e) {
     muestraError(e);
   }
 }
+
 
 /** Muestra los mensajes
  * almacenados en la collection
@@ -147,6 +143,8 @@ function htmlFila(doc) {
    * inyección de código. */
   return ( /* html */
     `<li class="fila">
+    <img src="${data.avatar}" alt="Avatar" class="avatar">
+      <div class="contenido">
       <strong class="primario">
         ${cod(data.usuarioId)}
       </strong>
@@ -155,6 +153,7 @@ function htmlFila(doc) {
       </span>
     </li>`);
 }
+
 
 /** Función que se invoca cuando
  * hay un error al recuperar los
