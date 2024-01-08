@@ -1,11 +1,11 @@
 // Reemplaza con la configuración de tu proyecto de Firebase
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_STORAGE_BUCKET",
-  messagingSenderId: "TU_MESSAGING_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyBS9Iy01nGihdBZcVcX26sdYG6qS_2EBWQ",
+  authDomain: "rest-zavala.firebaseapp.com",
+  projectId: "rest-zavala",
+  storageBucket: "rest-zavala.appspot.com",
+  messagingSenderId: "789112399672",
+  appId: "1:789112399672:web:066a317555f49780fb83cd"
 };
 
 // Inicializa Firebase
