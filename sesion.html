@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sesión</title>
+  
+  <!-- Título de la página -->
+  <title>Comentarios</title>
+  
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+  <!-- Inicialización de Firebase -->
   <script src="js/init.js"></script>
+  
+  <!-- Componentes personalizados -->
   <script type="module" src="cmp/mi-nav.js"></script>
   <script type="module" src="cmp/mi-footer.js"></script>
   <script type="module" src="cmp/mi-progreso.js"></script>
+  
+  <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <form name="forma">
-    <mi-nav></mi-nav>
-    <header>
-      <h1>Sesión</h1>
+  <!-- Barra de navegación -->
+  <mi-nav></mi-nav>
+
+  <!-- Formulario de comentarios -->
+  <form name="forma" class="comentario-form">
+    <header class="comentario-header">
+      <!-- Título de la sección -->
+      <h1>Comentario</h1>
+
+      <!-- Herramientas del formulario -->
       <div class="herramientas">
-         <a href="index.html"> Terminar Sesión</a>
+        <!-- Entrada de texto para el comentario -->
+        <input name="texto" required placeholder="Escribe tu comentario">
+        
+        <!-- Botón de enviar -->
+        <button class="enviar-btn">Enviar</button>
       </div>
     </header>
-    <figure>
-      <img id="avatar" src="" alt="Avatar">
-    </figure>
-    <p>
-      <label>
-        Email
-        <output name="email">
-          <mi-progreso></mi-progreso>
-        </output>
-      </label>
-    </p>
-    <p>
-      <label>
-        Nombre
-        <output name="nombre">
-          <mi-progreso></mi-progreso>
-        </output>
-      </label>
-    </p>
+
+    <!-- Lista de comentarios -->
+    <ul id="lista" class="comentario-lista">
+      <!-- Elemento de progreso (inicialmente oculto) -->
+      <li class="comentario-item">
+        <mi-progreso></mi-progreso>
+      </li>
+    </ul>
+
+    <!-- Pie de página -->
     <mi-footer></mi-footer>
   </form>
-  <script type="module" src="js/CtrlSesion.js"></script>
-  <script type="module" src="js/mostrar-datos-usuario.js"></script>
+
+  <!-- Script para el controlador de comentarios -->
+  <script type="module" src="js/CtrlChat.js"></script>
 </body>
 </html>
