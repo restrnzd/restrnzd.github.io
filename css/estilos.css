@@ -60,3 +60,21 @@ p label>* {
   box-sizing: border-box;
   width: 100%;
 }
+    #login-container {
+      text-align: center;
+    }
+
+    #google-login, #facebook-login {
+      background-color: #4285F4;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #google-login:hover, #facebook-login:hover {
+      background-color: #3e79cb;
+    }
+
