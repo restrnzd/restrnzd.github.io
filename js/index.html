@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autenticación con Firebase</title>
+  <!-- Agrega el SDK de Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <!-- Configura tu proyecto de Firebase -->
+  <script src="js/firebase-config.js"></script>
+
+  <!-- Agrega estilos para los botones -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #login-container {
+      text-align: center;
+    }
+
+    #google-login, #facebook-login {
+      background-color: #4285F4;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #google-login:hover, #facebook-login:hover {
+      background-color: #3e79cb;
+    }
+  </style>
+</head>
+<body>
+  <div id="login-container">
+    <h1>Autenticación con Firebase</h1>
+    <button id="google-login">Iniciar sesión con Google</button>
+    <button id="facebook-login">Iniciar sesión con Facebook</button>
+  </div>
+  <script src="js/auth.js"></script>
+  <!-- Agrega el script de autenticación -->
+  
+</body>
+</html>
