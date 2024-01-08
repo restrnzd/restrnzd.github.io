@@ -24,6 +24,7 @@ class MiNav extends HTMLElement {
         cambiaUsuario(usuario),
       muestraError);
   }
+//menu.html
 
   /**
    * @param {import(
@@ -35,6 +36,13 @@ class MiNav extends HTMLElement {
       const roles =
         await cargaRoles(
           usu.email);
+    if (roles.has("Administrador")) {
+        html += /* html */
+          `<li>
+            <a href=
+"menu.html">Menú</a>
+          </li>`;
+      }
      if (roles.has("Cliente")) {
         html += /* html */
           `<li>
@@ -42,8 +50,7 @@ class MiNav extends HTMLElement {
               "chat.html">Comentarios</a>
           </li>`;
       }
-      if (roles.has(
-        "Administrador")) {
+      if (roles.has("Administrador")) {
         html += /* html */
           `<li>
             <a href=
