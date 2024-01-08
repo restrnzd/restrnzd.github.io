@@ -2,76 +2,86 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"    content="width=device-width,       initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sesión</title>
-  <!--    Carga el núcleo de Firebase    JS SDK  -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="js/firebase-config.js"></script>
-  <!--    Agrega el manejo de    autenticación.  -->
-  <script
-    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js">
-    </script>
-  <!--    Agrega el manejo de bases de    datos.  -->
-  <script
-    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js">
-    </script>
-  <!--
-    Configura la app usando la
-    información del sitio de
-    Firebase.
-  -->
-  <script src="js/init.js">  </script>
-  <script type="module"    src="cmp/mi-nav.js">    </script>
-  <script type="module"    src="cmp/mi-footer.js">    </script>
-  <script type="module"    src="cmp/mi-progreso.js">    </script>
-  <link rel="stylesheet"    href="css/estilos.css"></head>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="js/init.js"></script>
+  <script type="module" src="cmp/mi-nav.js"></script>
+  <script type="module" src="cmp/mi-footer.js"></script>
+  <script type="module" src="cmp/mi-progreso.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    h1 {
+      color: #333333;
+    }
+
+    #avatar {
+      width: 100px; /* Ajusta el tamaño según tus necesidades */
+      height: 100px; /* Ajusta el tamaño según tus necesidades */
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    output {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .herramientas button {
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .herramientas button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
 <body>
-    <div id="login-container">
-    <h1>Autenticación con Firebase</h1>
-    <button id="google-login">Iniciar sesión con Google</button>
-    <button id="facebook-login">Iniciar sesión con Facebook</button>
-  </div>
-
-
- <form name="forma">
+  <form name="forma">
     <mi-nav></mi-nav>
     <header>
       <h1>Sesión</h1>
       <div class="herramientas">
-        <button
-          type="button"
-          name="terminarSesión">
-          Terminar Sesión
-        </button>
+        <button type="button" name="terminarSesion" onclick="signOut()">Terminar Sesión</button>
       </div>
     </header>
     <figure>
-      <img id="avatar" src=""
-        alt="Avatar">
+      <img id="avatar" src="" alt="Avatar">
     </figure>
     <p>
-      <label>
-        Email
-        <output name="email">
-          <mi-progreso>
-          </mi-progreso>
-        </output>
-      </label>
+      <label>Email <output name="email"></output></label>
     </p>
     <p>
-      <label>
-        Nombre
-        <output name="nombre">
-          <mi-progreso>
-          </mi-progreso>
-        </output>
-      </label>
+      <label>Nombre <output name="nombre"></output></label>
     </p>
     <mi-footer></mi-footer>
   </form>
-    <!-- Agrega el script de autenticación -->
-  <script src="js/auth.js"></script>
-  <script type="module"    src="js/CtrlSesion.js">    </script>
+  <script type="module" src="js/CtrlSesion.js"></script>
 </body>
 </html>
