@@ -137,8 +137,6 @@ function htmlFila(doc) {
 
   return ( /* html */
     `<li class="fila">
-      <img src="${data.avatar}" alt="Avatar" class="avatar">
-      <div class="contenido">
         <strong class="primario">
           ${cod(data.usuarioId)}
         </strong>
