@@ -28,3 +28,34 @@ function signInWithProvider(provider) {
       console.error(error.message);
     });
 }
+// ...
+
+// Función común para iniciar sesión con proveedores
+function signInWithProvider(provider) {
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      console.log(`Usuario autenticado: ${user.displayName}`);
+
+      // Redireccionar o mostrar el formulario después de autenticar
+      showAuthenticatedContent(user);
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+}
+
+// Función para mostrar el contenido después de autenticar
+function showAuthenticatedContent(user) {
+  // Ocultar el contenido de inicio de sesión
+  document.getElementById('login-container').style.display = 'none';
+
+  // Mostrar el formulario y contenido después de autenticar
+  document.getElementById('sesion-container').style.display = 'block';
+
+  // Actualizar el contenido del formulario con los datos del usuario
+  document.querySelector('output[name="email"]').textContent = user.email;
+  document.querySelector('output[name="nombre"]').textContent = user.displayName;
+  document.getElementById('avatar').src = user.photoURL || 'ruta_default_avatar.jpg';
+}
+
