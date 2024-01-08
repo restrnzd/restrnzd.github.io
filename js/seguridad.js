@@ -53,7 +53,7 @@ export async function
   terminaSesión() {
   try {
     await getAuth().signOut();
-    window.location.href = "index.html"; 
+    location.href = "index.html"; 
   } catch (e) {
     muestraError(e);
   }
