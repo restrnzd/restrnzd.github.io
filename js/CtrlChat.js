@@ -65,6 +65,7 @@ async function agrega(evt) {
 }
 
 
+
 /** Muestra los mensajes
  * almacenados en la collection
  * "Mensaje". Se actualiza
@@ -132,27 +133,22 @@ function htmlLista(snap) {
     "../lib/tiposFire.js").
     DocumentSnapshot} doc */
 function htmlFila(doc) {
-  /** Recupera los datos del
-   * documento.
-   * @type {import("./tipos.js").
-                      Mensaje} */
   const data = doc.data();
-  /* Agrega un li con los datos
-   * del documento, los cuales se
-   * codifican para evitar
-   * inyección de código. */
+
   return ( /* html */
     `<li class="fila">
-    <img src="${data.avatar}" alt="Avatar" class="avatar">
+      <img src="${data.avatar}" alt="Avatar" class="avatar">
       <div class="contenido">
-      <strong class="primario">
-        ${cod(data.usuarioId)}
-      </strong>
-      <span class="secundario">
-        ${cod(data.texto)}
-      </span>
+        <strong class="primario">
+          ${cod(data.usuarioId)}
+        </strong>
+        <span class="secundario">
+          ${cod(data.texto)}
+        </span>
+      </div>
     </li>`);
 }
+
 
 
 /** Función que se invoca cuando
