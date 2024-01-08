@@ -80,7 +80,7 @@ function htmlFila(doc) {
       <a class="fila" href=
   "alumno.html?${parámetros}">
         <strong class="primario">
-         ${grupo} ${matricula} ${nombre} ${dformat}
+          ${matricula} ${nombre} ${dformat}${grupo}
         </strong>
       </a>
      
