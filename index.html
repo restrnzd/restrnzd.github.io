@@ -2,89 +2,89 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autenticación</title>
-  <!-- Agrega el SDK de Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
-  <!-- Configura tu proyecto de Firebase -->
-  <script src="js/firebase-config.js"></script>
- <link rel="stylesheet" href="css/estilos.css">
-  <!-- Agrega estilos para los botones -->
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #FFD699;
-    }
-
-    #login-container {
-      text-align: center;
-    }
-
-    #google-login, #facebook-login {
-      background-color: #4285F4;
-      color: #ffffff;
-      border: none;
-      padding: 10px 15px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    #google-login:hover, #facebook-login:hover {
-      background-color: #3e79cb;
-    }
-  </style>
+  <meta name="viewport"
+    content="width=device-width,
+       initial-scale=1.0">
+  <title>Sesión</title>
+  <!--
+    Carga el núcleo de Firebase
+    JS SDK
+  -->
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js">
+    </script>
+  <!--
+    Agrega el manejo de
+    autenticación.
+  -->
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js">
+    </script>
+  <!--
+    Agrega el manejo de bases de
+    datos.
+  -->
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js">
+    </script>
+  <!--
+    Configura la app usando la
+    información del sitio de
+    Firebase.
+  -->
+  <script src="js/init.js">
+  </script>
+  <script type="module"
+    src="cmp/mi-nav.js">
+    </script>
+  <script type="module"
+    src="cmp/mi-footer.js">
+    </script>
+  <script type="module"
+    src="cmp/mi-progreso.js">
+    </script>
+  <link rel="stylesheet"
+    href="css/estilos.css">
 </head>
 <body>
-  <div id="login-container">
-    <h1>Autenticación</h1>
-    <button id="google-login">Iniciar sesión con Google</button>
-    <button id="facebook-login">Iniciar sesión con Facebook</button>
-  </div>
-  <div id="sesion-container" style="display: none;">
-    <form name="forma">
-      <mi-nav></mi-nav>
-      <header>
-        <h1>Sesión</h1>
-        <div class="herramientas">
-          <button
-            type="button"
-            name="terminarSesion"
-            onclick="signOut()">
-            Terminar Sesión
-          </button>
-        </div>
-      </header>
-      <figure>
-        <img id="avatar" src="" alt="Avatar">
-      </figure>
-      <p>
-        <label>
-          Email
-          <output name="email"></output>
-        </label>
-      </p>
-      <p>
-        <label>
-          Nombre
-          <output name="nombre"></output>
-        </label>
-      </p>
-      <mi-footer></mi-footer>
-    </form>
-    <script type="module" src="js/CtrlSesion.js"></script>
-  </div>
-
-  <script src="js/auth.js"></script>
-
-  <!-- Agrega el script de autenticación -->
-  <script src="js/auth.js"></script>
+ <form name="forma">
+    <mi-nav></mi-nav>
+    <header>
+      <h1>Sesión</h1>
+      <div class="herramientas">
+        <button
+          type="button"
+          name="terminarSesión">
+          Terminar Sesión
+        </button>
+      </div>
+    </header>
+    <figure>
+      <img id="avatar" src=""
+        alt="Avatar">
+    </figure>
+    <p>
+      <label>
+        Email
+        <output name="email">
+          <mi-progreso>
+          </mi-progreso>
+        </output>
+      </label>
+    </p>
+    <p>
+      <label>
+        Nombre
+        <output name="nombre">
+          <mi-progreso>
+          </mi-progreso>
+        </output>
+      </label>
+    </p>
+    <mi-footer></mi-footer>
+  </form>
+  <script type="module"
+    src="js/CtrlSesion.js">
+    </script>
 </body>
 </html>
