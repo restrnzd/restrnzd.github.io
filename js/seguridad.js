@@ -49,11 +49,11 @@ export async function
   }
   return false;
 }
-
 export async function
   terminaSesión() {
   try {
     await getAuth().signOut();
+    window.location.href = "index.html"; 
   } catch (e) {
     muestraError(e);
   }
