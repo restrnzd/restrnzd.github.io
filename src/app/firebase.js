@@ -9,6 +9,7 @@ const firebaseConfig = {
   storageBucket: "rest-zavala.appspot.com",
   messagingSenderId: "789112399672",
   appId: "1:789112399672:web:066a317555f49780fb83cd"
+  
 };
 
 // Initialize Firebase
