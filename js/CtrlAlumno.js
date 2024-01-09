@@ -16,8 +16,13 @@ import {
 const daoAlumno =
   getFirestore().
     collection("Alumno");
+const params =
+  new URL(location.href).
+    searchParams;
+const id = params.get("id");
 /** @type {HTMLFormElement} */
 const forma = document["forma"];
+
 getAuth().onAuthStateChanged(
   protege, muestraError);
 
@@ -27,8 +32,41 @@ getAuth().onAuthStateChanged(
 async function protege(usuario) {
   if (tieneRol(usuario,
     ["Administrador"])) {
-    forma.addEventListener(
-      "submit", guarda);
+    busca();
+  }
+}
+
+/** Busca y muestra los datos que
+ * corresponden al id recibido. */
+async function busca() {
+  try {
+    const doc =
+      await daoAlumno.
+        doc(id).
+        get();
+    if (doc.exists) {
+      /**
+       * @type {
+          import("./tipos.js").
+                  Alumno} */
+      const data = doc.data();
+      forma.rnombre.value = data.rnombre;
+      forma.rapellido.value = data.rapellido || "";
+      forma.telefono.value = data.telefono || "";
+      forma.rhora.value = data.rhora || "";
+      forma.fecha.value = data.fecha || "";
+      forma.addEventListener(
+        "submit", guarda);
+      forma.eliminar.
+        addEventListener(
+          "click", elimina);
+    } else {
+      throw new Error(
+        "No se encontró.");
+    }
+  } catch (e) {
+    muestraError(e);
+    muestraAlumnos();
   }
 }
 
@@ -49,15 +87,30 @@ async function guarda(evt) {
         import("./tipos.js").
                 Alumno} */
     const modelo = {
-      rnombre,
+      rnombre, 
       rapellido,
       telefono,
       rhora,
-      fecha 
+      fecha
     };
     await daoAlumno.
-      add(modelo);
+      doc(id).
+      set(modelo);
     muestraAlumnos();
+  } catch (e) {
+    muestraError(e);
+  }
+}
+
+async function elimina() {
+  try {
+    if (confirm("Confirmar la " +
+      "eliminación")) {
+      await daoAlumno.
+        doc(id).
+        delete();
+      muestraAlumnos();
+    }
   } catch (e) {
     muestraError(e);
   }
