@@ -66,9 +66,8 @@ function htmlFila(doc) {
    * @type {import("./tipos.js").
                   Alumno} */
   const data = doc.data();
-  const rnombre = cod(data.rnombre);
-  const rapellido = cod(data.rapellido);
-  const rhora = cod(data.rhora);
+  const matricula = cod(data.matricula);
+  const nombre = cod(data.nombre);
   var fsf= cod(data.fecha);
   var fecha = new Date(fsf);
   var espacio="[   -   ]";
@@ -81,7 +80,7 @@ function htmlFila(doc) {
       <a class="fila" href=
   "alumno.html?${parámetros}">
         <strong class="primario">
-          ${rnombre} ${rapellido} ${dformat}${rhora}
+          ${matricula} ${nombre} ${dformat}
         </strong>
       </a>
      
