@@ -16,13 +16,8 @@ import {
 const daoAlumno =
   getFirestore().
     collection("Alumno");
-const params =
-  new URL(location.href).
-    searchParams;
-const id = params.get("id");
 /** @type {HTMLFormElement} */
 const forma = document["forma"];
-
 getAuth().onAuthStateChanged(
   protege, muestraError);
 
@@ -32,41 +27,8 @@ getAuth().onAuthStateChanged(
 async function protege(usuario) {
   if (tieneRol(usuario,
     ["Administrador"])) {
-    busca();
-  }
-}
-
-/** Busca y muestra los datos que
- * corresponden al id recibido. */
-async function busca() {
-  try {
-    const doc =
-      await daoAlumno.
-        doc(id).
-        get();
-    if (doc.exists) {
-      /**
-       * @type {
-          import("./tipos.js").
-                  Alumno} */
-      const data = doc.data();
-      forma.rnombre.value = data.matricula;
-      forma.rapellido.value = data.nombre || "";
-      forma.telefono.value = data.telefono || "";
-      forma.rhora.value = data.grupo || "";
-      forma.fecha.value = data.fecha || "";
-      forma.addEventListener(
-        "submit", guarda);
-      forma.eliminar.
-        addEventListener(
-          "click", elimina);
-    } else {
-      throw new Error(
-        "No se encontró.");
-    }
-  } catch (e) {
-    muestraError(e);
-    muestraAlumnos();
+    forma.addEventListener(
+      "submit", guarda);
   }
 }
 
@@ -77,40 +39,25 @@ async function guarda(evt) {
     const formData =
       new FormData(forma);
     const rnombre = getString(
-        formData, "matricula").trim();  
-    const rapellido = getString(formData, "nombre").trim();
+        formData, "rnombre").trim();  
+    const rapellido = getString(formData, "rapellido").trim();
     const telefono = getString(formData, "telefono").trim();
-    const rhora = getString(formData, "grupo").trim();
+    const rhora = getString(formData, "rhora").trim();
     const fecha = getString(formData, "fecha").trim();
     /**
      * @type {
         import("./tipos.js").
                 Alumno} */
     const modelo = {
-      rnombre, 
+      rnombre,
       rapellido,
       telefono,
       rhora,
-      fecha
+      fecha 
     };
     await daoAlumno.
-      doc(id).
-      set(modelo);
+      add(modelo);
     muestraAlumnos();
-  } catch (e) {
-    muestraError(e);
-  }
-}
-
-async function elimina() {
-  try {
-    if (confirm("Confirmar la " +
-      "eliminación")) {
-      await daoAlumno.
-        doc(id).
-        delete();
-      muestraAlumnos();
-    }
   } catch (e) {
     muestraError(e);
   }
